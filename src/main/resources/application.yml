@@ -1,0 +1,89 @@
+micronaut:
+  application:
+    name: birddog
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: PT1M
+    enabled: true
+  security:
+    enabled: false
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: '987tgrbyo78ct34biouyt43b78y90t34b769034t8tgrbyo78ct34biouyt43b78y90t34b769034t87tgrbyo78ct34biouyt43b78y90t34b769034t'
+    intercept-url-map:
+      - pattern: /*.js
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /*.map
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /*.ico
+        access:
+          - isAnonymous()
+  router:
+    static-resources:
+      angular-frontend:
+        paths: classpath:spa
+        mapping: /**
+        spa: true
+        enabled: true
+  server:
+    max-request-size: 100000000000
+    multipart:
+      max-file-size: 100000000000
+    enabled: false
+#    oauth2:
+#      clients:
+#        default:
+#          client-id: ${OAUTH_CLIENT_ID}
+#          client-secret: ${OAUTH_CLIENT_SECRET}
+#          openid:
+#            issuer: ${OAUTH_ISSUER}
+endpoints:
+  # endpoint to expose metrics via prometheus exporter
+  prometheus:
+    sensitive: true
+    enabled: true
+  loggers:
+    sensitive: false
+    enabled: true
+  refresh:
+    sensitive: false
+    enabled: true
+  all:
+    enabled: true
+    sensitive: false
+jackson:
+  serialization-inclusion: always
+  serialization:
+    indent-output: true # Pretty-print JSONå
+datasources:
+  default:
+    url: jdbc:mysql://10.0.0.224:3306/birddog?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: user
+    password: 'password'
+    schema-generate: create_drop
+    dialect: MYSQL
+
+birddog:
+  tools:
+    subfinder:
+      dir: /bd/
+    openvas:
+      username: gvmadmin
+      password: StrongPass
+      maxConcurrentTasks: 4
+      prefix: BDS
+      socket: /opt/gvm/var/run/gvmd.sock
+      ovScanConfigId: daba56c8-73ec-11df-a475-002264764cea
+      ovScannerId: 08b69003-5fc2-4037-a479-93b440211c73
