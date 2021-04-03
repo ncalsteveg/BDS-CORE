@@ -1,0 +1,43 @@
+<div class="main-container">
+  <div class="alert alert-app-level">
+  </div>
+  <header class="header-6">
+    <div class="branding">
+      <a routerLink="/" class="logo-and-title">
+        <span class="title">Birddog Security</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a routerLink="/" class="nav-link nav-text">Home</a>
+      <a routerLink="/customer" class="nav-link nav-text">Customer</a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a routerLink="/about" clrDropdownItem>About</a>
+          <a routerLink="/preferences" clrDropdownItem>Preferences</a>
+          <a clrDropdownItem>Log-out</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </header>
+  <nav class="subnav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link nav-text">Scan</a>
+        <a routerLink="/customer" class="nav-link nav-text">Customer</a>
+        <a routerLink="/jobs" class="nav-link nav-text">Scan Jobs</a>
+        <a routerLink="/domains" class="nav-link nav-text">Domains</a>
+        <a routerLink="/hosts" class="nav-link nav-text">Hosts</a>
+        <a routerLink="/ports" class="nav-link nav-text">Ports</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

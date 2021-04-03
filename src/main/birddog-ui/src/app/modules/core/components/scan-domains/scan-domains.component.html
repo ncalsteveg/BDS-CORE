@@ -1,0 +1,22 @@
+<clr-datagrid>
+  <clr-dg-column [clrDgField]="'dnsName'">DNS Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'created'">Created</clr-dg-column>
+  <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+  <clr-dg-column [clrDgField]="'portsFounds'">Ports Found</clr-dg-column>
+  <clr-dg-column [clrDgField]="'discoverySource'">Source</clr-dg-column>
+  <clr-dg-row *clrDgItems="let entity of entities">
+    <clr-dg-cell>
+      <button class="btn btn-link" (click)="selectScanDomain(entity)">{{entity.dnsName}}</button>
+    </clr-dg-cell>
+    <clr-dg-cell>{{entity.created | date}}</clr-dg-cell>
+    <clr-dg-cell>{{entity.status}}</clr-dg-cell>
+    <clr-dg-cell>{{entity.portsFounds}}</clr-dg-cell>
+    <clr-dg-cell>{{entity.discoverySource}}</clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Domains</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

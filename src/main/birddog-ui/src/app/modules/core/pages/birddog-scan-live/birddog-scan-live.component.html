@@ -1,0 +1,17 @@
+<input clrInput placeholder="My input" name="input" [(ngModel)]="input"/>
+<button class="btn btn-primary" (click)="executeScan()">Primary</button>
+
+<clr-datagrid>
+  <clr-dg-column>Status</clr-dg-column>
+  <clr-dg-column>Running on</clr-dg-column>
+  <clr-dg-column>Scan Type</clr-dg-column>
+  <clr-dg-column>Message</clr-dg-column>
+  <clr-dg-row *ngFor="let msg of messages">
+    <clr-dg-cell>{{msg.statusDate | date}}</clr-dg-cell>
+    <clr-dg-cell>{{msg.server}}</clr-dg-cell>
+    <clr-dg-cell>{{msg.scanType}}</clr-dg-cell>
+    <clr-dg-cell>{{msg.scanMessage}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{messages.length}} users</clr-dg-footer>
+</clr-datagrid>

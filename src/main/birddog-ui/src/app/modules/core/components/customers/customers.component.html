@@ -1,0 +1,10 @@
+Customers
+
+<clr-datagrid>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-row *clrDgItems="let entity of entities">
+    <clr-dg-cell>
+      <button class="btn btn-link" (click)="selectCustomer(entity)">{{entity.name}}</button>
+    </clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>

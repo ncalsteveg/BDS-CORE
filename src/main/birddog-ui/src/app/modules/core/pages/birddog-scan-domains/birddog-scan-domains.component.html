@@ -1,0 +1,45 @@
+SCAN DOMAINS
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>Domains</button>
+    <clr-tab-content *clrIfActive="true">
+      <app-scan-domains (onScanDomainSelected)="onScanDomainSelected()"></app-scan-domains>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>NMAPPER</button>
+    <clr-tab-content *clrIfActive>
+      <button class="btn btn-primary" (click)="refresh()">NMAPPER</button>
+      <clr-datagrid>
+        <clr-dg-column [clrDgField]="'ipAddress'">IP</clr-dg-column>
+        <clr-dg-column [clrDgField]="'port.portid'">Port</clr-dg-column>
+        <clr-dg-column [clrDgField]="'protocol'">Protocol</clr-dg-column>
+        <clr-dg-column [clrDgField]="'port.service.name'">Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'port.service.product'">Product</clr-dg-column>
+        <clr-dg-column [clrDgField]="'port.service.cpe'">CPE</clr-dg-column>
+        <clr-dg-column [clrDgField]="'port.service.method'">Method</clr-dg-column>
+        <clr-dg-column [clrDgField]="'port.service.ostype'">OS Type</clr-dg-column>
+        <clr-dg-row *clrDgItems="let entity of entities">
+          <clr-dg-cell>
+            <button class="btn btn-link">{{entity.ipAddress}}</button>
+          </clr-dg-cell>
+          <clr-dg-cell>{{entity.port.portid}}</clr-dg-cell>
+          <clr-dg-cell>{{entity.protocol}}</clr-dg-cell>
+          <clr-dg-cell>{{entity.port.service.name}}</clr-dg-cell>
+          <clr-dg-cell>{{entity.port.service.product}}</clr-dg-cell>
+          <clr-dg-cell>{{entity.port.service.cpe}}</clr-dg-cell>
+          <clr-dg-cell>{{entity.port.service.method}}</clr-dg-cell>
+          <clr-dg-cell>{{entity.port.service.ostype}}</clr-dg-cell>
+        </clr-dg-row>
+        <clr-dg-footer>
+          <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Ports</clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+          </clr-dg-pagination>
+        </clr-dg-footer>
+      </clr-datagrid>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>
+
+

@@ -1,0 +1,16 @@
+<clr-datagrid>
+  <clr-dg-column>ID</clr-dg-column>
+  <clr-dg-column>Created</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+  <clr-dg-column>Started</clr-dg-column>
+  <clr-dg-column>Completed</clr-dg-column>
+  <clr-dg-row *clrDgItems="let entity of entities">
+    <clr-dg-cell>
+      <button class="btn btn-link" (click)="selectScanJob(entity)">{{entity.id}}</button>
+    </clr-dg-cell>
+    <clr-dg-cell>{{entity.created | date}}</clr-dg-cell>
+    <clr-dg-cell>{{entity.jobStatus}}</clr-dg-cell>
+    <clr-dg-cell>{{entity.scanStarted | date}}</clr-dg-cell>
+    <clr-dg-cell>{{entity.scanCompleted | date}}</clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>
